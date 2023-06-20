@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 DEFAULT_CONFIG = {
-    'lightning_enabled': True,
+    'lightning_enabled': False,
     'lightning_url': 'http://localhost',
     'lightning_port': '4000',
     'lightning_api_key': '<api key>',
@@ -36,7 +36,13 @@ class WorkflowConfig(AppConfig):
     def _set_up_workflows(self):
         from workflow.services import WorkflowService
         from workflow.systems.python import PythonWorkflowAdaptor
+        PythonWorkflowAdaptor.register_workflow(
+            'example_workflow',
+            'example_group',
+            lambda args, kwargs: print(f'EXAMPLE WORKFLOW {args} {kwargs}')
+        )
         WorkflowService.register_system_adaptor(PythonWorkflowAdaptor)
+
 
         if self.lightning_enabled:
             from workflow.systems.lightning import LightningWorkflowAdaptor
