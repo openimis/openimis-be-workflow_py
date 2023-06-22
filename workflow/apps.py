@@ -1,7 +1,9 @@
 from django.apps import AppConfig
 
 DEFAULT_CONFIG = {
-    'lightning_enabled': True,
+    'python_enabled': True,
+    'python_example_workflow_enabled': True,
+    'lightning_enabled': False,
     'lightning_url': 'http://localhost',
     'lightning_port': '4000',
     'lightning_api_key': '<api key>',
@@ -11,6 +13,9 @@ DEFAULT_CONFIG = {
 class WorkflowConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'workflow'
+
+    python_enabled = None
+    python_example_workflow_enabled = None
 
     lightning_enabled = None
     lightning_url = None
@@ -35,8 +40,16 @@ class WorkflowConfig(AppConfig):
 
     def _set_up_workflows(self):
         from workflow.services import WorkflowService
-        from workflow.systems.python import PythonWorkflowAdaptor
-        WorkflowService.register_system_adaptor(PythonWorkflowAdaptor)
+
+        if self.python_enabled:
+            from workflow.systems.python import PythonWorkflowAdaptor
+
+            if self.python_example_workflow_enabled:
+                PythonWorkflowAdaptor.register_workflow(
+                    'example_workflow',
+                    'example_group',
+                    lambda args, kwargs: print(f'EXAMPLE WORKFLOW {args} {kwargs}'))
+            WorkflowService.register_system_adaptor(PythonWorkflowAdaptor)
 
         if self.lightning_enabled:
             from workflow.systems.lightning import LightningWorkflowAdaptor
