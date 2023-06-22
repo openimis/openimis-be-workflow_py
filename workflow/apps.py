@@ -48,7 +48,7 @@ class WorkflowConfig(AppConfig):
                 PythonWorkflowAdaptor.register_workflow(
                     'example_workflow',
                     'example_group',
-                    lambda args, kwargs: print(f'EXAMPLE WORKFLOW {args} {kwargs}'))
+                    lambda data: print(f'EXAMPLE WORKFLOW {data}'))
             WorkflowService.register_system_adaptor(PythonWorkflowAdaptor)
 
         if self.lightning_enabled:
