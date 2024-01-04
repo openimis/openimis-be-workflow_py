@@ -4,9 +4,9 @@ DEFAULT_CONFIG = {
     'python_enabled': True,
     'python_example_workflow_enabled': True,
     'lightning_enabled': True,
-    'lightning_url': 'http://lightning',
+    'lightning_url': 'http://localhost',
     'lightning_port': '4000',
-    'lightning_api_key': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJKb2tlbiIsImlhdCI6MTY4OTI0MzYxMCwiaXNzIjoiSm9rZW4iLCJqdGkiOiIydG9tYzc4MzA3ZGVncWJicjAwMDAwaDUiLCJuYmYiOjE2ODkyNDM2MTAsInVzZXJfaWQiOiIxNTIzOWVjMS01Njg2LTQzOTMtOWE1Yy0zYzcyNmUyNzExYTYifQ.UhGtrYoPcLiBCYgeJ4ukZgPy6jwiLZ-KeeJrbiopLN0',
+    'lightning_api_key': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJKb2tlbiIsImlhdCI6MTcwNDM4Mjc5OSwiaXNzIjoiSm9rZW4iLCJqdGkiOiIydWppdTgxdWFuZTQxOHZobjgwMDAwNDYiLCJuYmYiOjE3MDQzODI3OTksInVzZXJfaWQiOiIxOWM3OWQxYi0wZGQxLTRiZmMtYmRiNy01ZTZiODM2ZDNkY2MifQ.lXWx1s_QO8pfsftC1qstZ4zGST4azuvtU1fGZ2unSsU',
 }
 
 
