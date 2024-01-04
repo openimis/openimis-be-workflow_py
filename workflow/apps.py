@@ -4,7 +4,7 @@ DEFAULT_CONFIG = {
     'python_enabled': True,
     'python_example_workflow_enabled': True,
     'lightning_enabled': True,
-    'lightning_url': 'http://localhost',
+    'lightning_url': 'http://lightning',
     'lightning_port': '4000',
     'lightning_api_key': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJKb2tlbiIsImlhdCI6MTcwNDM4Mjc5OSwiaXNzIjoiSm9rZW4iLCJqdGkiOiIydWppdTgxdWFuZTQxOHZobjgwMDAwNDYiLCJuYmYiOjE3MDQzODI3OTksInVzZXJfaWQiOiIxOWM3OWQxYi0wZGQxLTRiZmMtYmRiNy01ZTZiODM2ZDNkY2MifQ.lXWx1s_QO8pfsftC1qstZ4zGST4azuvtU1fGZ2unSsU',
 }
