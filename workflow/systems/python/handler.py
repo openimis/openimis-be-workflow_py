@@ -14,7 +14,7 @@ class PythonWorkflowHandler(WorkflowHandler):
 
     def run(self, data: Dict):
         try:
-            output = self._function(data)
+            output = self._function(**data)
             return result(
                 success=True,
                 data=output
