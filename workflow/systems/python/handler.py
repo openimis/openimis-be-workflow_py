@@ -1,6 +1,7 @@
 import logging
 from typing import Dict
 
+from workflow.exceptions import PythonWorkflowHandlerException
 from workflow.systems.base import WorkflowHandler
 from workflow.util import result
 
@@ -18,6 +19,14 @@ class PythonWorkflowHandler(WorkflowHandler):
             return result(
                 success=True,
                 data=output
+            )
+        # Dedicated exception handling for workflow exceptions that should have custom message
+        except PythonWorkflowHandlerException as e:
+            logging.error("Error while executing workflow %s-%s: ", self.system, self.name, exc_info=e)
+            return result(
+                success=False,
+                message=e.message,
+                details=str(e)
             )
         except Exception as e:
             logging.error("Error while executing workflow %s-%s: ", self.system, self.name, exc_info=e)
