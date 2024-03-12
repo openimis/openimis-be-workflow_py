@@ -3,10 +3,10 @@ from django.apps import AppConfig
 DEFAULT_CONFIG = {
     'python_enabled': True,
     'python_example_workflow_enabled': True,
-    'lightning_enabled': True,
+    'lightning_enabled': False,
     'lightning_url': 'http://localhost',
     'lightning_port': '4000',
-    'lightning_api_key': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJKb2tlbiIsImlhdCI6MTY4NzM1NTQ0OCwiaXNzIjoiSm9rZW4iLCJqdGkiOiIydGxiMWxwMGhiZmR0dWhnMW8wMDAxbzEiLCJuYmYiOjE2ODczNTU0NDgsInVzZXJfaWQiOiJjNzNmOTllZi04NzE2LTRmZTgtOTE2Yi00MzdlYzVkMTlmY2UifQ.woj1PeTQsY6ryOmNzR_JEUlwjqS9_ukEcA8etoBxe7M',
+    'lightning_api_key': '<api key>',
 }
 
 
