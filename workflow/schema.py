@@ -10,8 +10,8 @@ from workflow.services import WorkflowService
 class Query:
     workflow = graphene.Field(
         graphene.List(WorkflowGQLType),
-        name=graphene.String(),
-        group=graphene.String(),
+        name=graphene.Argument(graphene.String, required=False),
+        group=graphene.Argument(graphene.String, required=False),
     )
 
     def resolve_workflow(self, info, **kwargs):
