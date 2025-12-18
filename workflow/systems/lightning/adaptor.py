@@ -81,7 +81,7 @@ class LightningWorkflowAdaptor(WorkflowAdaptor):
             webhook_triggers = [trigger for trigger in entry['triggers'] if trigger['type'] == 'webhook']
             if not webhook_triggers:
                 logger.error(f'{cls.system}-{group}-{entry["name"]} have no webhook triggers. Cannot create WorkflowHandler')
-                continue 
+                continue
             workflows.append(LightningWorkflowHandler(
                 system=cls.system,
                 group=group,

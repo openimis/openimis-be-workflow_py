@@ -62,7 +62,7 @@ class LightningClient:
                           details=str(response.status_code))
 
     def _handle_error(self, error):
-        logger.error("Error during openFN/Lightning get request", exc_info=e)
+        logger.error("Error during openFN/Lightning get request", exc_info=error)
         return result(success=False,
                       message='Error during openFN/Lightning request',
                       details=str(error))
