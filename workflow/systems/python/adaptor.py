@@ -40,7 +40,7 @@ class PythonWorkflowAdaptor(WorkflowAdaptor):
             return result(success=True, data={'workflows': workflows})
         except Exception as e:
             logger.error("Error while getting groups from %s", cls.system, exc_info=e)
-            return result(success=False, message=f"Error while getting groups from python adaptor", details=str(e))
+            return result(success=False, message="Error while getting groups from python adaptor", details=str(e))
 
     @classmethod
     def register_workflow(cls, name: str, group: str, function: Callable[[List[Any], Dict[str, Any]], Any]):
