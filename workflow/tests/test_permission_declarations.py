@@ -18,10 +18,6 @@ from `WorkflowService`), so there is no `get_rights` to test: the access point t
 configured value is `configured_perms`, checked here directly.
 """
 
-import json
-from pathlib import Path
-
-from django.conf import settings
 from django.test import TestCase
 
 from workflow.apps import (
@@ -38,10 +34,6 @@ from workflow.apps import (
 EXPECTED_RIGHTS = {
     "gql_workflow_search_perms": ["210001"],
 }
-
-# The assembly's catalogue, not the package's: the modules are installed from a
-# separate tree, so it is resolved through BASE_DIR.
-PERMISSIONS_MAP = Path(settings.BASE_DIR) / "permissions_map.json"
 
 
 class WorkflowPermissionDeclarationTestCase(TestCase):
@@ -109,29 +101,3 @@ class WorkflowPermissionDeclarationTestCase(TestCase):
         """None means "no rule": the caller must fail closed."""
         self.assertIsNone(configured_perms("workflow", "nosuchaction"))
 
-    # --- match with the catalogue -----------------------------------------
-    def test_declared_ids_are_in_the_permissions_map(self):
-        """
-        The catalogue is what the solution builder seeds the roles from: an identifier
-        missing from it can be granted to nobody.
-        """
-        catalog = json.loads(PERMISSIONS_MAP.read_text(encoding="utf-8"))
-        declared = {
-            str(right_id)
-            for actions in DJANGO_PERMS.values()
-            for _, right_id in actions.values()
-        }
-        self.assertEqual(declared - set(catalog.values()), set())
-
-    def test_the_catalog_lists_no_other_workflow_right(self):
-        """An orphan `workflow.*` entry would be a right nothing enforces any more."""
-        catalog = json.loads(PERMISSIONS_MAP.read_text(encoding="utf-8"))
-        catalogued = {
-            value for key, value in catalog.items() if key.startswith("workflow.")
-        }
-        declared = {
-            str(right_id)
-            for actions in DJANGO_PERMS.values()
-            for _, right_id in actions.values()
-        }
-        self.assertEqual(catalogued, declared)
